@@ -1,0 +1,20 @@
+### Vector Databases
+If you've been paying attention to anything in tech over the past few years, you've noticed "embeddings" everywhere. Search engines that actually understand what you mean. Recommendation systems that surface eerily relevant content. Chatbots that can retrieve information from massive document collectors. All of these rely on the same underlying primitive: finding things that are similar to other things, fast.
+
+This isn't actually a new concept. Vector databases and their related techniques have been around for a long time in recommendation systems. But the power of vector databases has been amplified by the rise of new machine learning techniques and it unlocks a cool new set of infra applications.
+
+Traditional databases are great at exact lookups. Give me the user ID 12345. Find all orders placed on January 1st. But ask a traditional database "find me documents similar to this one" and you're in trouble. That's where vector databases come in.
+
+## What's a Vector Anyway?
+Before we talk about databases that store vectors, we need to understand what we're actually storing.
+
+A `vector` (or `embedding`) is just an array of numbers that represent something. That "something" could be a word, a sentence, an image, a user, a product, or really anything you can feed into a machine learning model. The magic is that similar things end up with similar vectors.
+
+// Two sentence that mean similar things
+"The cat sat on the mat" -> [0.12, -0.34, 0.78, ..., 0.45] // 1536 numbers
+"A feline rested on a rug" -> [0.11, -0.32, 0.79, ..., 0.44] // very similar!
+
+// A sentence with different meaning
+"The stock market crashed" -> [-0.89, 0.12, -0.45, ..., 0.23] // very different
+
+The typical embedding has somewhere between 128 and 1536 dimension's (OpenAI's text-embedding-3-large uses 3072). Each dimension captures some aspect of the meaning, though the individual dimensions aren't usually interpretable by humans. What matters is that the geometric relationships between vectors reflect semantic relations between the thing they represent.
