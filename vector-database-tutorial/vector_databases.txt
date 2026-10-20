@@ -18,3 +18,16 @@ A `vector` (or `embedding`) is just an array of numbers that represent something
 "The stock market crashed" -> [-0.89, 0.12, -0.45, ..., 0.23] // very different
 
 The typical embedding has somewhere between 128 and 1536 dimension's (OpenAI's text-embedding-3-large uses 3072). Each dimension captures some aspect of the meaning, though the individual dimensions aren't usually interpretable by humans. What matters is that the geometric relationships between vectors reflect semantic relations between the thing they represent.
+
+## Similarity Metrics:
+Once you have vectors, you need a way to measure how similar two vectors are. There are a few common approaches:
+
+`Euclidean distance (L2)` is the straight-line distance between two points in space. If you remember they Pythagorean theorem from high school, that's essentially what we're doing, just extended to hundreds of dimensions. Smaller distance means more similar. This metrics cares about both direction and magnitude.
+
+`Cosine Similarity` measures the angle between two vectors, ignoring their magnitudes. Two vectors pointing in the same direction have cosine similarity of 1, perpendicular vectors have 0, and opposite vectors have -1. This is great when you've normalized your embeddings (which most embedding models do).
+
+`Dot product` is similar to cosine similarity but doesn't normalize for magnitude. It's essentially cosine similarity multiplied by the lengths of both vectors. Some systems use this because it's slightly faster to compute.
+
+`Hamming distance` counts the number of positions where two binary vectors differ. This is extremely fast (just XOR the bits and count), which is why it's popular in certain indexing schemes like Locality Sensitive Hashing.
+
+Note: For an infra-style system design interview, the choice of similarity metric usually doesn't appear much at all. You can mention "we'd use a cosine similarity metric" and come ahead of most candidates. In an ML system design interview. 
