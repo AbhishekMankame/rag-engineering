@@ -30,4 +30,7 @@ Once you have vectors, you need a way to measure how similar two vectors are. Th
 
 `Hamming distance` counts the number of positions where two binary vectors differ. This is extremely fast (just XOR the bits and count), which is why it's popular in certain indexing schemes like Locality Sensitive Hashing.
 
-Note: For an infra-style system design interview, the choice of similarity metric usually doesn't appear much at all. You can mention "we'd use a cosine similarity metric" and come ahead of most candidates. In an ML system design interview. 
+Note: For an infra-style system design interview, the choice of similarity metric usually doesn't appear much at all. You can mention "we'd use a cosine similarity metric" and come ahead of most candidates. In an ML system design interview, the choice might be more significant depending on your embedding model and use case. If your embedding model is trained on a specific task, you'll use that (e.g., minimizing the dot product between items that are bought together, that's your distance metric).
+
+## The Nearest Neighbor Problem
+Now, once we have a bunch of vectors and a similarity metric, we can start to ask questions. These are usually
