@@ -33,4 +33,8 @@ Once you have vectors, you need a way to measure how similar two vectors are. Th
 Note: For an infra-style system design interview, the choice of similarity metric usually doesn't appear much at all. You can mention "we'd use a cosine similarity metric" and come ahead of most candidates. In an ML system design interview, the choice might be more significant depending on your embedding model and use case. If your embedding model is trained on a specific task, you'll use that (e.g., minimizing the dot product between items that are bought together, that's your distance metric).
 
 ## The Nearest Neighbor Problem
-Now, once we have a bunch of vectors and a similarity metric, we can start to ask questions. These are usually
+Now, once we have a bunch of vectors and a similarity metric, we can start to ask questions. These are usually framed in terms of a "query vector" which you can think of like your search term. For most applications the query vector is the embedding of the item to which you're trying to find similar things.
+
+The K-Nearest Neighbors (KNN) problem is: given a query vector, give me the K most similar vectors in your collection. Or, given an item, find the K most similar items in your collection.
+
+The naive approach KNN search is simple. Compare your query against every vector in the database, compute similarity score, sort, return the top K. This is exact KNN and it's effectively O(n) where `n` is the number of vectors (`k` is typically very small, so we can ignore it).
