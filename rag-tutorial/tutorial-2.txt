@@ -23,3 +23,20 @@ The main components of RAG are:
 7. Prompt Augmentation Layer: Combines retrieved chunks with the user's query to provide context to the LLM.
 8. LLM (Generator): Generates a grounded response using both the query and retrieved knowledge.
 9. Updater (Optional): Regularlu refreshes and re-embeds data to keep the knowledge base up to date.
+
+### Working of RAG:
+The system first searches external sources for relevant information based on the user's query instead of relying only on existing training data.
+
+1. Creating External Data: External data from APIs, databases or documents is chunked, converted into embeddings and stored in a vector database to build a knowledge library.
+2. Retrieving Relevant Information: User queries are converted into vectors and matched against stored embeddings to fetch the most relevant data ensuring accurate responses.
+3. Augmenting the LLM Prompt: Retrieved content is added to the user's query giving the LLM extra context to work with.
+4. Answer Generation: LLM uses both the query and retrieved data to generate a factually accurate, context aware response.
+5. Keeping Data Updated: External data and embeddings
+
+### What Problems does RAG solve
+1. Hallucinations: Traditional generative models can produce incorrect information, RAG reduces the risk by retrieving verified, external data to ground responses in factual knowledge.
+2. Outdated Information: Static models rely on training data that may become outdated. It dynamically retrieves latest information ensuring relevance and accuracy in real time.
+3. Contextual Relevance: Geneartive models often struggle with maintaining context in complex or multi turn conversations. RAG retrieves relevant documents to enrich the context improving coherence and relevance.
+4. Domain Specific Knowledge: Generic models may lack expertise in specialized fields. It integrates domain specific external knowledge for tailored and precised responses.
+5. Cost and Efficiency: Fine tuning large models for specific task is expensive. It eliminates the need for retraining by dynamically retrieving relevant data reducing costs and computational load.
+6. Scalability Across Domains: It is adaptable to diverse industries from healthcare to finance without extensive retraining making it highly scalable.
